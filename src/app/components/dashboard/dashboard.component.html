@@ -1,0 +1,27 @@
+<!--<app-pie-chart></app-pie-chart>-->
+
+<div style="height: 300px; width: 400px">
+  <h1>1. Pie chart for vechial currently parked</h1>
+  <canvas #pieCanvas style="height:300px; width:400px"></canvas>
+  <hr color="red">
+</div>
+<br/>
+<br/>
+<br/>
+
+<p>Total Card parked: {{this.car.length}}</p>
+<p>Total MicroBus parked: {{this.microbus.length}}</p>
+<p>Total Truck parked: {{this.truck.length}}</p>
+<h3>Total Empty solot: N/A</h3>
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div  >
+  <h1>2. line chart for parking data</h1>
+  <canvas #barCanvas style="height:10vh; width:20vw"></canvas>
+  <hr color="red">
+</div>
+

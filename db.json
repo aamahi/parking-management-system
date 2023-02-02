@@ -1,0 +1,76 @@
+{
+  "parking": [
+    {
+      "license": "2021200010041",
+      "category": "Car",
+      "ownerName": "Mahi",
+      "ownerPhone": 1751989173,
+      "ownerAddress": "zokig onjk syl",
+      "status": "In",
+      "entryTime": "2023-02-17T18:09",
+      "exitTime": "2023-02-17T18:09",
+      "charge": 20,
+      "id": 1
+    },
+    {
+      "license": "2021200010041",
+      "category": "Truck",
+      "ownerName": "Mahi",
+      "ownerPhone": 1751989173,
+      "ownerAddress": "zokig onjk syl",
+      "status": "In",
+      "entryTime": "2023-02-17T18:09",
+      "exitTime": "2023-02-17T18:09",
+      "charge": 20,
+      "id": 2
+    },
+    {
+      "license": "Syl-58639",
+      "ownerName": "Mahi",
+      "ownerPhone": 1751989179,
+      "ownerAddress": "mirza jangal road, sylhet",
+      "status": "In",
+      "category": "MicroBus",
+      "entryTime": "2023-02-07T19:48",
+      "exitTime": "2023-02-10T19:47",
+      "charge": 30,
+      "id": 3
+    },
+    {
+      "license": "2021200010041",
+      "category": "MicroBus",
+      "ownerName": "Mahi",
+      "ownerPhone": 1751989173,
+      "ownerAddress": "zokig onjk syl",
+      "status": "In",
+      "entryTime": "2023-02-17T18:09",
+      "exitTime": "2023-02-17T18:09",
+      "charge": 20,
+      "id": 3
+    },
+    {
+      "license": "DHK-58634",
+      "ownerName": "Rayhan mia",
+      "ownerPhone": 1785994162,
+      "ownerAddress": "Mirpur- 11, pollobi dhaka.",
+      "status": "Out",
+      "category": "Car",
+      "entryTime": "2023-02-07T20:49",
+      "exitTime": "2023-02-23T21:49",
+      "charge": 40,
+      "id": 4
+    },
+    {
+      "license": "Khu-96586521",
+      "ownerName": "Mahi",
+      "ownerPhone": 1751989173,
+      "ownerAddress": "Mirpur- 11, pollobi dhaka.",
+      "status": "In",
+      "category": "Truck",
+      "entryTime": "2023-02-03T19:49",
+      "exitTime": "2023-02-08T20:50",
+      "charge": 50,
+      "id": 5
+    }
+  ]
+}

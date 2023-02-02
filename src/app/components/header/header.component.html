@@ -1,0 +1,142 @@
+<div class="mb-4">
+  <div class="flex justify-between mt-4">
+    <h1 class="justify-start flex-none text-grey-darkest">Parking Management System</h1>
+    <button (click)="openModal()" class="justify-end p-2 border-2 rounded text-teal border-teal-200 hover:text-white-200 hover:bg-teal-400">Add</button>
+  </div>
+</div>
+
+
+<div [ngClass]="isOpenCreateForm ? 'display-block' : 'display-none' ">
+  <ng-container>
+    <form  [formGroup]="parkingForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+          Vehicel License Number
+        </label>
+        <input [value]="parkingValue?.license" [ngClass]="{ 'border-red-500': parkingForm.get('license')?.invalid && parkingForm.get('license')?.touched }" formControlName="license"  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Vehicel Licence Number">
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" >
+          Category
+        </label>
+        <select [ngClass]="{ 'border-red-500': parkingForm.get('category')?.invalid && parkingForm.get('category')?.touched }" formControlName="category" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+          <option [selected]="category === parkingValue?.category" *ngFor="let category of categories" [value]="category">{{category}}</option>
+        </select>
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+          Owner Name
+        </label>
+        <input [value]="parkingValue?.ownerName" [ngClass]="{ 'border-red-500': parkingForm.get('ownerName')?.invalid && parkingForm.get('ownerName')?.touched }" formControlName="ownerName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="Owner Name">
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="ownerPhone">
+          Owner Phone
+        </label>
+        <input [value]="parkingValue?.ownerPhone" [ngClass]="{ 'border-red-500': parkingForm.get('ownerPhone')?.invalid && parkingForm.get('ownerPhone')?.touched }" formControlName="ownerPhone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="ownerPhone" type="number" placeholder="Owner Phone">
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="ownerAddress">
+          Owner Address
+        </label>
+        <input [value]="parkingValue?.ownerAddress" [ngClass]="{ 'border-red-500': parkingForm.get('ownerAddress')?.invalid && parkingForm.get('ownerAddress')?.touched }" formControlName="ownerAddress" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="ownerAddress" type="text" placeholder="Owner Address">
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" >
+          Status
+        </label>
+
+        <select [ngClass]="{ 'border-red-500': parkingForm.get('status')?.invalid && parkingForm.get('status')?.touched }" formControlName="status" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+          <option  [selected]="statu === parkingValue?.status" *ngFor="let statu of status" [value]="statu">{{statu}}</option>
+        </select>
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="entryTime">
+          Entry Time
+        </label>
+        <input [value]="parkingValue?.entryTime" [min]="currentTimeAndDate()" [ngClass]="{ 'border-red-500': parkingForm.get('entryTime')?.invalid && parkingForm.get('entryTime')?.touched }" formControlName="entryTime" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="entryTime" type="datetime-local">
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
+          Exit Time
+        </label>
+        <input [value]="parkingValue?.exitTime" [ngClass]="{ 'border-red-500': parkingForm.get('exitTime')?.invalid && parkingForm.get('exitTime')?.touched }" formControlName="exitTime" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="date" type="datetime-local">
+      </div>
+
+      <div class="flex items-center justify-between">
+        <a class="cursor-pointer inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" (click)="closeModal()">
+          Close
+        </a>
+        <button *ngIf="!isEdit" class="bg-blue-500" (click)="createParking()" mat-raised-button >Parking added</button>
+        <button *ngIf="isEdit" class="bg-blue-500" (click)="updateParking(parkingValue?.id)" mat-raised-button >Parking Update</button>
+      </div>
+    </form>
+  </ng-container>
+
+</div>
+
+<!--<div>-->
+<!--  <div *ngFor="let book of bookList" class="flex mb-4 items-center">-->
+<!--    Name: <p class="w-full text-grey-200">{{book?.name}}</p>-->
+<!--    Id : <p class="w-full text-grey-200">{{book?.id}}</p>-->
+<!--    <button (click)="bookDetails(book?.id)" class="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white-200 text-green-200 border-green-200 hover:bg-green-200">Details</button>-->
+<!--    <button (click)="delete(book?.id)" class="flex-no-shrink p-2 ml-2 border-2 rounded text-red-300 border-red-200 hover:text-white-200 hover:bg-red-400">Delete</button>-->
+<!--  </div>-->
+
+<!--</div>-->
+
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <tr>
+      <th scope="col" class="px-6 py-3">
+        Owner Name
+      </th>
+      <th scope="col" class="px-6 py-3">
+        Vehicle type
+      </th>
+      <th scope="col" class="px-6 py-3">
+        License no
+      </th>
+      <th scope="col" class="px-6 py-3">
+        Entry time
+      </th>
+      <th scope="col" class="px-6 py-3">
+        Exit time
+      </th><th scope="col" class="px-6 py-3">
+        Status
+      </th>
+      <th scope="col" class="px-6 py-3">
+        Edit
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of parkingList" class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        {{data?.ownerName}}
+      </th>
+      <td class="px-6 py-4">
+        {{data?.category}}
+      </td>
+      <td class="px-6 py-4">
+        {{data?.license}}
+      </td>
+      <td class="px-6 py-4">
+        {{data?.entryTime |date}}
+      </td>
+      <td class="px-6 py-4">
+        {{data?.exitTime}}
+      </td>
+      <td class="px-6 py-4">
+        {{data?.status}}
+      </td>
+      <td class="px-6 py-4">
+        <a (click)="edit(data?.id)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

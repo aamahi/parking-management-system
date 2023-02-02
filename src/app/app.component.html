@@ -1,0 +1,17 @@
+<!-- component -->
+<div class="h-100 w-full flex items-center justify-center bg-teal-50 font-sans">
+  <div class="bg-white rounded shadow p-6 m-4 width-650">
+    <mat-tab-group>
+      <mat-tab label="Dashboard">
+        <ng-container>
+          <app-dashboard></app-dashboard>
+        </ng-container>
+      </mat-tab>
+      <mat-tab label="Parking List">
+        <ng-container>
+          <router-outlet></router-outlet>
+        </ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
