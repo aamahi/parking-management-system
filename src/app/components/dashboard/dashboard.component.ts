@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChild('barCanvas') barCanvas: ElementRef | undefined;
   barChart: any;
   pieChart: any;
+  emptySolot: number = 8;
 
   constructor(private commonService: CommonService) {}
 
