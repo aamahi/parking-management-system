@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               '#f1c40f',
               '#e74c3c',
             ],
-            data: [this.car?.length ? this.car.length : 1, this.microbus?.length ? this.microbus.length : 1, this.truck.length? this.truck.length : 1],
+            data: [this.car?.length ? this.car.length : 11, this.microbus?.length ? this.microbus.length : 6, this.truck.length? this.truck.length : 13],
           },
         ],
       },
@@ -81,7 +81,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         datasets: [
           {
             label: '# parking',
-            data: [this.car?.length ? this.car.length : 1, this.microbus?.length ? this.microbus.length : 1, this.truck.length? this.truck.length : 1],
+            data: [this.car?.length ? this.car.length : 11, this.microbus?.length ? this.microbus.length : 6, this.truck.length? this.truck.length : 13],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
