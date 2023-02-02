@@ -1,6 +1,7 @@
 import {AfterViewInit, Component,ElementRef, OnInit, ViewChild} from '@angular/core';
 import Chart from 'chart.js/auto'
 import {CommonService} from "../../services/common.service";
+import {take} from "rxjs";
 
 
 @Component({
@@ -8,11 +9,11 @@ import {CommonService} from "../../services/common.service";
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit {
   canvas: any;
   ctx: any;
-  car: any = 1;
-  microbus: any = 1;
+  car: any;
+  microbus: any;
   truck: any = 1;
   @ViewChild('pieCanvas') pieCanvas!: { nativeElement: any };
   @ViewChild('barCanvas') barCanvas: ElementRef | undefined;
@@ -24,11 +25,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getCar();
-    this.getMicroBus();
-    this.getTruck();
   }
 
-  ngAfterViewInit(): void {
+  initChart(): void {
     this.pieChartBrowser();
     this.barChartMethod()
   }
@@ -48,7 +47,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               '#f1c40f',
               '#e74c3c',
             ],
-            data: [this.car?.length ? this.car.length : 11, this.microbus?.length ? this.microbus.length : 6, this.truck.length? this.truck.length : 13],
+            data: [this.car, this.microbus,this.truck],
           },
         ],
       },
@@ -56,23 +55,27 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   getCar() {
-    this.commonService.getCategory('Car').subscribe((res)=> {
-      this.car =res;
-      this.pieChart.data[0] = this.car.length;
+    this.commonService.getCategory('Car').subscribe((Carres:any)=> {
+      this.car= Carres.length;
+      this.commonService.getCategory('MicroBus').subscribe((Busres:any)=> {
+        this.microbus= Busres.length;
+        this.commonService.getCategory('Truck').subscribe((Truckres:any)=> {
+          this.truck= Truckres.length;
+          this.initChart();
+        })
+      })
     })
   }
-  getMicroBus() {
-    this.commonService.getCategory('MicroBus').subscribe((res)=> {
-      this.microbus = res;
-      this.pieChart.data[1]=this.microbus.length;
-    })
-  }
-  getTruck() {
-    this.commonService.getCategory('Truck').subscribe((res)=> {
-     this.truck = res;
-     this.pieChart.data[2]= this.truck?.length
-    })
-  }
+  // getMicroBus() {
+  //   this.commonService.getCategory('MicroBus').subscribe((res:any)=> {
+  //     this.pieChart.data[1]= res.length;
+  //   })
+  // }
+  // getTruck() {
+  //   this.commonService.getCategory('Truck').subscribe((res:any)=> {
+  //     this.pieChart.data[2]= res.length;
+  //   })
+  // }
 
   barChartMethod() {
     this.barChart = new Chart(this.barCanvas?.nativeElement, {
@@ -82,7 +85,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         datasets: [
           {
             label: '# parking',
-            data: [this.car?.length ? this.car.length : 11, this.microbus?.length ? this.microbus.length : 6, this.truck.length? this.truck.length : 13],
+            data: [this.car, this.microbus, this.truck],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',

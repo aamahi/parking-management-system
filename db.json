@@ -49,28 +49,40 @@
       "id": 3
     },
     {
-      "license": "DHK-58634",
-      "ownerName": "Rayhan mia",
-      "ownerPhone": 1785994162,
-      "ownerAddress": "Mirpur- 11, pollobi dhaka.",
-      "status": "Out",
-      "category": "Car",
-      "entryTime": "2023-02-07T20:49",
-      "exitTime": "2023-02-23T21:49",
-      "charge": 40,
-      "id": 4
-    },
-    {
       "license": "Khu-96586521",
-      "ownerName": "Mahi",
+      "ownerName": "Mahi dsd",
       "ownerPhone": 1751989173,
       "ownerAddress": "Mirpur- 11, pollobi dhaka.",
-      "status": "In",
+      "status": "Out",
       "category": "Truck",
       "entryTime": "2023-02-03T19:49",
       "exitTime": "2023-02-08T20:50",
       "charge": 50,
       "id": 5
+    },
+    {
+      "license": "Sykl-36",
+      "ownerName": "Mahi skldfhi",
+      "ownerPhone": 1242555556,
+      "ownerAddress": "Sylhet dhaka bd",
+      "status": "In",
+      "category": "Car",
+      "entryTime": "2023-02-03T21:48",
+      "exitTime": "2023-02-03T21:48",
+      "charge": 40,
+      "id": 6
+    },
+    {
+      "license": "dha -2562",
+      "ownerName": "mahi sdo",
+      "ownerPhone": 1751989173,
+      "ownerAddress": "Sylhet dhaka bd",
+      "status": "In",
+      "category": "MicroBus",
+      "entryTime": "2023-02-16T22:52",
+      "exitTime": "2023-03-02T23:54",
+      "charge": 30,
+      "id": 7
     }
   ]
 }

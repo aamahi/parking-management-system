@@ -13,7 +13,16 @@ export class HeaderComponent implements OnInit{
   parkingList: any = '';
   isOpenCreateForm = false;
   isEdit = false;
-  parkingValue: any;
+  parkingValue: any = {
+    license: '',
+    category: '',
+    ownerName: '',
+    ownerPhone: '',
+    ownerAddress: '',
+    status: '',
+    entryTime: '',
+    exitTime: ''
+  };
 
   openModal () {
     this.isOpenCreateForm = !this.isOpenCreateForm;
@@ -90,8 +99,19 @@ export class HeaderComponent implements OnInit{
 
 
   edit(id: number) {
-    this.commonService.getDetails(id).subscribe((res)=>{
+    this.commonService.getDetails(id).subscribe((res: any)=>{
       if(res) {
+        //this.parkingForm.patchValue(res);
+        this.parkingForm.patchValue({
+            license: res?.license,
+            ownerName: res?.ownerName,
+            ownerPhone: res?.ownerPhone,
+            ownerAddress: res?.ownerAddress,
+            status: res?.status,
+            category: res?.category,
+            entryTime: res?.entryTime,
+            exitTime: res?.exitTime
+        })
         this.isEdit = true;
         this.isOpenCreateForm = true;
         this.parkingValue = res;
@@ -101,7 +121,7 @@ export class HeaderComponent implements OnInit{
 
   updateParking(id: number) {
     const updatePayload = {
-      license: this.parkingForm?.get('license')?.value,
+      license: this.parkingValue.license,
       ownerName: this.parkingForm?.get('ownerName')?.value,
       ownerPhone: this.parkingForm?.get('ownerPhone')?.value,
       ownerAddress: this.parkingForm?.get('ownerAddress')?.value,
