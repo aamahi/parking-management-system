@@ -66,16 +66,6 @@ export class DashboardComponent implements OnInit {
       })
     })
   }
-  // getMicroBus() {
-  //   this.commonService.getCategory('MicroBus').subscribe((res:any)=> {
-  //     this.pieChart.data[1]= res.length;
-  //   })
-  // }
-  // getTruck() {
-  //   this.commonService.getCategory('Truck').subscribe((res:any)=> {
-  //     this.pieChart.data[2]= res.length;
-  //   })
-  // }
 
   barChartMethod() {
     this.barChart = new Chart(this.barCanvas?.nativeElement, {

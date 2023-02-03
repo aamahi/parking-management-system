@@ -75,15 +75,6 @@
 
 </div>
 
-<!--<div>-->
-<!--  <div *ngFor="let book of bookList" class="flex mb-4 items-center">-->
-<!--    Name: <p class="w-full text-grey-200">{{book?.name}}</p>-->
-<!--    Id : <p class="w-full text-grey-200">{{book?.id}}</p>-->
-<!--    <button (click)="bookDetails(book?.id)" class="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white-200 text-green-200 border-green-200 hover:bg-green-200">Details</button>-->
-<!--    <button (click)="delete(book?.id)" class="flex-no-shrink p-2 ml-2 border-2 rounded text-red-300 border-red-200 hover:text-white-200 hover:bg-red-400">Delete</button>-->
-<!--  </div>-->
-
-<!--</div>-->
 
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -127,7 +118,7 @@
         {{data?.entryTime |date}}
       </td>
       <td class="px-6 py-4">
-        {{data?.exitTime}}
+        {{data?.exitTime | date}}
       </td>
       <td class="px-6 py-4">
         {{data?.status}}

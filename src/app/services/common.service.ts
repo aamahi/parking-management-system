@@ -29,7 +29,7 @@ export class CommonService {
     return this.http.get(`${this.apiUrl}/parking/${id}`);
   }
   getCategory(type: any) {
-    return this.http.get(`${this.apiUrl}/parking?category=${type}`);
+    return this.http.get(`${this.apiUrl}/parking?category=${type}&&status=In`);
   }
 
   updateParking(payload: any, id: any) {

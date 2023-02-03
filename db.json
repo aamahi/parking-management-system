@@ -53,7 +53,7 @@
       "ownerName": "Mahi dsd",
       "ownerPhone": 1751989173,
       "ownerAddress": "Mirpur- 11, pollobi dhaka.",
-      "status": "Out",
+      "status": "In",
       "category": "Truck",
       "entryTime": "2023-02-03T19:49",
       "exitTime": "2023-02-08T20:50",
@@ -77,12 +77,24 @@
       "ownerName": "mahi sdo",
       "ownerPhone": 1751989173,
       "ownerAddress": "Sylhet dhaka bd",
-      "status": "In",
+      "status": "Out",
       "category": "MicroBus",
       "entryTime": "2023-02-16T22:52",
       "exitTime": "2023-03-02T23:54",
       "charge": 30,
       "id": 7
+    },
+    {
+      "license": "2021200010041",
+      "ownerName": "Mahikjjhb",
+      "ownerPhone": 5885291888,
+      "ownerAddress": "Sylhet dhaka bdmkhl",
+      "status": "In",
+      "category": "Car",
+      "entryTime": "2023-03-03T12:12",
+      "exitTime": "2023-03-10T13:13",
+      "charge": 40,
+      "id": 8
     }
   ]
 }
